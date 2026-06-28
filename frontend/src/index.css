@@ -1,0 +1,47 @@
+a:hover {
+  cursor: pointer;
+}
+
+/* CSS para o prjeto 8 */
+/* Ao colocar o mouse sobre algo na barra de paginação */
+.page-link {
+  --bs-pagination-hover-color: rgb(39, 62, 189);
+}
+
+/* Cor do 1, 2 e 3 iluminado */
+.pagination {
+  --bs-pagination-active-bg: rgb(39, 62, 189);
+  --bs-pagination-active-border-color: rgb(39, 62, 189);
+}
+
+/* Cor de tudo qdo não iluminado */
+a.page-link {
+  color: rgb(39, 62, 189);
+}
+button.btn-azul {
+  background-color: rgb(39, 62, 189);
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border-radius: 5%;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-width: 0;
+}
+button.btn-vermelho {
+  background-color: rgb(175, 26, 26);
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border-radius: 5%;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-width: 0;
+}
+/* CSS para o prjeto 9 */
+/* Para alterar a cor da borda das caixas de texto do bootstrap */
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid rgb(163, 160, 160) !important;
+}
