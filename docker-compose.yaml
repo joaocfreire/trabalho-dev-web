@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: mysql:8
@@ -10,9 +8,11 @@ services:
       MYSQL_PASSWORD: admin123
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - rede-trabalho
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -29,9 +29,15 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/devweb
       - CHAVE_SECRETA=${CHAVE_SECRETA:-minha_chave_super_secreta_jwt_1234567890}
+    networks:
+      - rede-trabalho
     depends_on:
       db:
         condition: service_healthy
 
 volumes:
   db_data:
+
+networks:
+  rede-trabalho:
+    driver: bridge
