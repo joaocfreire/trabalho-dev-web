@@ -41,7 +41,7 @@ const HomePage = () => {
         <div className="row">
           <div className="col-lg-3">
             <h5>Turmas</h5>
-            {/* Adicionar a barra de pesquisa */}
+            {}
             <div className="mb-3">
               <input
                 type="text"
@@ -53,13 +53,13 @@ const HomePage = () => {
             </div>
             
             <nav className="nav nav-pills d-flex flex-column">
-              {/* Mapear a lista de turmas filtradas */}
+              {}
               {filteredTurmas.map((turma: Turma) => (
                 <NavLink className="nav-link" key={turma.id} to={"/" + turma.id}>
                   {Formatters.getFullTurmaNome(turma)}
                 </NavLink>
               ))}
-              {/* Opcional: Mostrar uma mensagem se não houver resultados */}
+              {}
               {filteredTurmas.length === 0 && searchTerm !== "" && (
                 <div className="mt-2 text-muted">Nenhuma turma encontrada com o nome digitado.</div>
               )}

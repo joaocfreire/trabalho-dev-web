@@ -114,6 +114,19 @@ const excluir = async (id: number | string) => {
     return await response.json();
   };
 
-  return {incluir, alterar, recuperarComPaginacao,recuperarTodos,excluir,recuperarPorParametro };
+  const recuperarPorId = async (id: number | string): Promise<T> => {
+    const response = await fetchWithAuth(`${URL}/${id}`);
+    if (!response.ok) {
+      const error: any = await response.json().catch(() => ({}));
+      if (error) throw error;
+      else
+        throw new Error(
+          "Erro ao recuperar por id: " + " - Status code: " + response.status
+        );
+    }
+    return await response.json();
+  };
+
+  return { incluir, alterar, recuperarComPaginacao, recuperarTodos, excluir, recuperarPorParametro, recuperarPorId };
 };
 export default useApi;
