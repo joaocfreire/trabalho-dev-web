@@ -23,7 +23,7 @@ public class DataSeeder implements CommandLineRunner {
 
     private final AlunoRepository alunoRepository;
     private final InscricaoRepository inscricaoRepository;
-    private final TurmaRepository turmaRepository;
+    private final TurmaRepository turmaRepository;  
     private final ProfessorRepository professorRepository;
     private final DisciplinaRepository disciplinaRepository;
     private final UsuarioService usuarioService;
@@ -32,24 +32,27 @@ public class DataSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         
         InfoUsuario admin = usuarioService.cadastrarUsuario(new Usuario("Administrador José", "admin@admin.com", "admin", Role.ADMIN));
-        InfoUsuario user = usuarioService.cadastrarUsuario(new Usuario("Usuário Genival", "user@user.com", "user", Role.USER));
+        InfoUsuario user = usuarioService.cadastrarUsuario(new Usuario("Usuário Pedro", "user@user.com", "user", Role.USER));
 
         // --- 1. CONFIGURAÇÃO (Disciplinas e Professores) ---
-        Disciplina matDis = disciplinaRepository.save(new Disciplina("Matemática Discreta", 64));
+        Disciplina grafos = disciplinaRepository.save(new Disciplina("Algoritmos em Gráfos", 64));
         Disciplina devWeb = disciplinaRepository.save(new Disciplina("Desenvolvimento Web", 64));
-        Disciplina c2 = disciplinaRepository.save(new Disciplina("Cálculo Segundo", 64));
+        Disciplina redes2 = disciplinaRepository.save(new Disciplina("Redes de Computadores 2", 64));
+        Disciplina sd = disciplinaRepository.save(new Disciplina("Sistemas Distribuídos", 64));
 
         Professor carlos = professorRepository.save(new Professor("Carlos","carlos@ic.uff.br"));
-        Professor denise = professorRepository.save(new Professor("Denise","denise@ic.uff.br"));
-        Professor joana = professorRepository.save(new Professor("Joana", "joana@ic.uff.br"));
+        Professor luisfelipe = professorRepository.save(new Professor("Luís Felipe","lf@ic.uff.br"));
+        Professor celio = professorRepository.save(new Professor("Célio", "celio@ic.uff.br"));
+        Professor flavia = professorRepository.save(new Professor("Flávia", "flavia@ic.uff.br"));
 
         // --- 2. CRIAÇÃO DAS TURMAS ---
-        Turma turma1 = turmaRepository.save(new Turma("2025","1° Semestre",carlos, devWeb, "D001"));
-        Turma turma2 = turmaRepository.save(new Turma("2025","2° Semestre",denise, c2, "C001"));
-        Turma turma3 = turmaRepository.save(new Turma("2026","1 ° Semestre",joana, matDis,"M001"));
-        Turma turma4 = turmaRepository.save(new Turma("2026","2° Semestre",carlos, devWeb, "D002"));
+        Turma turma1 = turmaRepository.save(new Turma("2026","1° Semestre",carlos, devWeb, "DW001"));
+        Turma turma2 = turmaRepository.save(new Turma("2026","1° Semestre",luisfelipe, grafos, "AG001"));
+        Turma turma3 = turmaRepository.save(new Turma("2026","1 ° Semestre", celio, redes2,"RD001"));
+        Turma turma4 = turmaRepository.save(new Turma("2026","1° Semestre",carlos, devWeb, "DW002"));
+        Turma turma5 = turmaRepository.save(new Turma("2026","1° Semestre",flavia, sd, "SD001"));
 
-        List<Turma> turmas = List.of(turma1, turma2, turma3, turma4);
+        List<Turma> turmas = List.of(turma1, turma2, turma3, turma4, turma5);
         final int NUM_TURMAS = turmas.size();
 
         // --- 3. ALUNOS ORIGINAIS (Armazenados para uso posterior) ---
